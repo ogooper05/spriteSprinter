@@ -1,12 +1,20 @@
-sprite s;
+SpriteManager _SM;
+
 void setup() {
-    size(800, 600);
-    s = new sprite(width/2, height/2, 50, 50);
+    size(1024, 768);
+    _SM = new SpriteManager();
+    _SM.spawn(new Invader(250, 50));
 }
 
-//runs at speed of frame rate
-
 void draw() {
-    s.update();
-    s.display();
+    background(0);
+    _SM.manage();
+}
+
+void keyPressed() {
+    _SM.player.keyDown();
+}
+
+void keyReleased() {
+    _SM.player.keyUp();
 }
