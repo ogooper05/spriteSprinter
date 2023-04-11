@@ -7,6 +7,7 @@ class Player extends Sprite {
         super(x, y, 40, 40); // in this case, Sprite
         team = 1;
     }
+
     @Override
     void update() {
         float speed = 1.2;
@@ -17,8 +18,22 @@ class Player extends Sprite {
         // update the position by velocity
         pos.add(vel);
         // always try to decelerate
+
+        //fix bounds
+        if(pos.x < 0 + size.x/2) pos.x = size.x/2;
+        if(pos.x > width - size.x/2) pos.x = width - size.x/2;
+        if(pos.y < 0 + size.y/2) pos.y = size.y/2;
+        if(pos.y > height - size.y/2) pos.y = height - size.y/2;
+
         vel.mult(0.9);
     }
+
+    @Override
+    void display() {
+        fill(200, 0, 200);
+        ellipse(pos.x, pos.y, size.x, size.y);
+    }
+
     void keyUp() {
         switch(key) { // key is a global value
             case 'a':
