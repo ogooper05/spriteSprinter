@@ -12,7 +12,7 @@ long mark, wait = 1200; //ms
     void update() {
         super.update();
         PVector aim = new PVector(_SM.player.pos.x - this.pos.x, _SM.player.pos.y - this.pos.y);
-        aim = aim.normalize().mult(8);
+        aim = aim.normalize().mult(20);
         if(millis() - mark > wait) {
             mark = millis();
             _SM.spawn(new Bullet(pos, aim, team));
