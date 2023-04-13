@@ -1,0 +1,3 @@
+class Chaser extends Sprite {
+
+}
